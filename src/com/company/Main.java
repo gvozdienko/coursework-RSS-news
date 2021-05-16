@@ -13,13 +13,11 @@ public static void window(String string) {
     window.setVisible(true);
     JLabel label = new JLabel(string, JLabel.CENTER);
     JTextArea area = new JTextArea(string);
+    JScrollPane scroll = new JScrollPane(area,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
     window.setSize(1200, 800);
-    window.add(area);
+    window.add(scroll);
+
 }
-
-
-
-
     public static String readRSS(String urlAddress) throws IOException {
         try {
             URL rssUr1 = new URL(urlAddress);
@@ -78,7 +76,6 @@ public static void window(String string) {
 
             }
             in.close();
-
             return sourceCode;
         } catch (MalformedURLException ue) {
             System.out.println("Malformed URL");
