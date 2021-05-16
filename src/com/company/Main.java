@@ -8,13 +8,13 @@ public class Main {
        window(readRSS("https://www.0629.com.ua/rss"));
     }
 public static void window(String string) {
-
-    JFrame window = new JFrame("Hello JFrame");
+    JFrame window = new JFrame("RSS-news");
     window.setVisible(true);
     JLabel label = new JLabel(string, JLabel.CENTER);
     JTextArea area = new JTextArea(string);
     JScrollPane scroll = new JScrollPane(area,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
     window.setSize(1200, 800);
+    window.setLocationRelativeTo(null);
     window.add(scroll);
 
 }
