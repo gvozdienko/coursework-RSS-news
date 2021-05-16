@@ -5,10 +5,20 @@ import java.io.*;
 import java.net.*;
 public class Main {
     public static void main(String[] args) throws IOException {
-
-        System.out.println(readRSS("https://www.0629.com.ua/rss"));
-
+       window(readRSS("https://www.0629.com.ua/rss"));
     }
+public static void window(String string) {
+
+    JFrame window = new JFrame("Hello JFrame");
+    window.setVisible(true);
+    JLabel label = new JLabel(string, JLabel.CENTER);
+    JTextArea area = new JTextArea(string);
+    window.setSize(1200, 800);
+    window.add(area);
+}
+
+
+
 
     public static String readRSS(String urlAddress) throws IOException {
         try {
@@ -16,6 +26,7 @@ public class Main {
             BufferedReader in = new BufferedReader(new InputStreamReader(rssUr1.openStream()));
             String sourceCode = "";
             String line;
+
             while ((line = in.readLine()) != null) {
                if (line.contains("<title>")) {
                     int firstPos = line.indexOf("<title>");
@@ -67,6 +78,7 @@ public class Main {
 
             }
             in.close();
+
             return sourceCode;
         } catch (MalformedURLException ue) {
             System.out.println("Malformed URL");
